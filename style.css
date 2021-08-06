@@ -1,0 +1,142 @@
+body{
+	background-color: black;
+}
+
+.header{
+	background-color: rgb(80, 80, 80);
+	margin-bottom: 10px;
+	padding: 10px;
+}
+.headerTitle{
+	color: #8f5bd9;
+	margin: 0 20px;
+	display: inline;
+	position: relative;
+	left: 3vw;
+	font-size: xx-large;
+	font-weight: 800;
+}
+.titleLink{
+	text-decoration: none;
+	color: #8f5bd9;
+}
+.titleLink:hover{
+	text-decoration: none;
+	color: #8f5bd9;
+}
+.headerMenu{
+	background-color: rgb(80, 80, 80);
+	border: none;
+	margin: 0 auto;
+}
+.headerMenu:hover{
+	background-color: rgb(110, 110, 110);
+	transition: 0.4s;
+}
+.menuItem{
+	text-decoration: none;
+	color: black;
+}
+.menuItem:hover{
+	color: white;
+	transition: 0.4s;
+}
+.actual{
+	color: white;
+}
+.login{
+	float: right;
+	margin: 10px;
+	background-color: rgb(80, 80, 80);
+	text-decoration: none;
+	color: black;
+	font-size: large;
+	font-weight: 600;
+	border: none;
+}
+.login:hover{
+	background-color: rgb(110, 110, 110);
+	transition: 0.4s;
+	color: white;
+	transition: 0.4s;
+}
+.offcanvas{
+	background-color: rgb(110, 110, 110);
+}
+.buscador{
+	margin: 10px;
+	display: inline;
+	position: relative;
+	left: 10vw;
+
+}
+.buscadorBarra{
+	width: 450px;
+	
+}
+.buscadorBoton{
+	width: 70px;
+	
+}
+
+/*Main*/
+.section{
+	width: 100vw;
+	display: inline-block;
+}
+.sectionTitle{
+	margin:10px 20px;
+	color: rgb(110, 110, 110);
+	float: left;
+}
+.sectionSubt{
+	float: right;
+	margin: 20px 50px;
+	color: rgb(110, 110, 110);
+}
+.sectionSubt:hover{
+	color:white;
+	transition: 0.5s;
+}
+
+.flex{
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+}
+.flexPages{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+.estrenos, .populares, .top10{
+	width: 90%;
+	height: 500px;
+	max-height: 500px;
+	margin: 0 auto;
+}
+
+.card{
+	width: 33%;
+	background-color: rgb(110, 110, 110) ;
+}
+.card-body{
+	height: 20%;
+	overflow: hidden;
+}
+.card-img-top{
+	width: 80%;
+	height: 75%;
+	align-self: center;
+	margin-top: 5px;
+}
+
+.canvasBodyItem{
+	text-decoration: none;
+	color: black;
+}
+
+.movieCardImg{
+	float: left;
+	height: 60%;
+}
