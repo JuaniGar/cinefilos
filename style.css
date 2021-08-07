@@ -1,5 +1,5 @@
 body{
-	background-color: black;
+	background-image: url("./media/background.jpg");
 }
 
 .header{
@@ -24,6 +24,7 @@ body{
 	text-decoration: none;
 	color: #8f5bd9;
 }
+
 .headerMenu{
 	background-color: rgb(80, 80, 80);
 	border: none;
@@ -44,6 +45,7 @@ body{
 .actual{
 	color: white;
 }
+
 .login{
 	float: right;
 	margin: 10px;
@@ -92,7 +94,7 @@ body{
 .sectionSubt{
 	float: right;
 	margin: 20px 50px;
-	color: rgb(110, 110, 110);
+	color: rgb(130, 130, 130);
 }
 .sectionSubt:hover{
 	color:white;
@@ -104,14 +106,10 @@ body{
 	flex-flow: row nowrap;
 	justify-content: space-between;
 }
-.flexPages{
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
-}
-.estrenos, .populares, .top10{
+
+.estrenos, .populares, .top10, .containerPopPage{
 	width: 90%;
-	height: 500px;
+	height: 450px;
 	max-height: 500px;
 	margin: 0 auto;
 }
@@ -119,6 +117,10 @@ body{
 .card{
 	width: 33%;
 	background-color: rgb(110, 110, 110) ;
+	border-radius: 10px;
+}
+.card-search{
+	height: 600px;
 }
 .card-body{
 	height: 20%;
@@ -136,7 +138,31 @@ body{
 	color: black;
 }
 
-.movieCardImg{
+
+/*Pages*/
+.card-body-top10{
+	height: 30%;
+	position: relative;
+	top: 100px;
+	font-size: 18px;
+}
+.card-title-top10{
+	font-size: 25px;
+}
+.containerTopPage, .containerPopPage{
+	display: flex;
+	flex-flow: column nowrap;
+}
+.card-top10{
+	width: 60%;
+	background-color: rgb(110, 110, 110) ;
+	border-radius: 10px;
+	margin: 10px;
+	align-self: center;
+}
+.card-img-top-top10{
 	float: left;
-	height: 60%;
+	width: 33%;
+	height: 90%;
+	margin: 5px;
 }

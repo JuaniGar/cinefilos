@@ -51,7 +51,7 @@ $("#loginBtn").click(function(event){
 
 
 let apiData = []
-let html = ''
+let htmlNew = ''
 const estrenos = document.querySelector(".estrenos")
 const moviesNew = ["tt5433138","tt12801262", "tt9770150"]
 let movieCard = ""
@@ -69,27 +69,50 @@ const settings = {
 };
 
 $.ajax(settings).done(function (response) {
-	html += `<div class="card">
+	htmlNew += `<div class="card">
   <img src="${response.poster}" class="card-img-top" alt="Poster ${response.title}">
   <div class="card-body">
-    <h5 class="card-title">${response.title}</h5>
-    <ul>
-    	<li>${response.year}</li>
-    	<li>IMDb: ${response.rating}</li>
-    </ul>
+    <h5 class="card-title">${response.title}(${response.year})</h5>
+    <p>IMDb: ${response.rating}</p>
    </div>
 </div>`;
 apiData = [...apiData, response];
-estrenos.innerHTML = html
+estrenos.innerHTML = htmlNew
 })
 })
-
 
 const populares = document.querySelector(".populares")
-const moviesPop = ["tt1375666", "tt0108052", "tt0167260", "tt0068646", "tt0137523", "tt0126029"]
-let html1 = ''
+const containerPopPage = document.querySelector(".containerPopPage")
+const moviesPopPage = ["tt1375666", "tt6751668", "tt0172495", "tt0109830", "tt0137523", "tt0126029"]
+const moviesPopMain = moviesPopPage.slice(0,3)
+let htmlPopMain = ''
+let htmlPopPage = ''
 
-moviesPop.forEach(movie=>{
+moviesPopMain.forEach(movie=>{
+	const settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": `https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/${movie}`,
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "4febb5c775mshbaa376822110a0dp1cd698jsn28a17df44064",
+		"x-rapidapi-host": "imdb-internet-movie-database-unofficial.p.rapidapi.com"
+	}
+};
+$.ajax(settings).done(function (response) {
+	htmlPopMain += `<div class="card">
+  <img src="${response.poster}" class="card-img-top" alt="Poster ${response.title}">
+  <div class="card-body">
+    <h5 class="card-title">${response.title}(${response.year})</h5>
+    <p>IMDb: ${response.rating}</p>
+   </div>
+</div>`;
+apiData = [...apiData, response];
+populares.innerHTML = htmlPopMain
+});
+})
+
+moviesPopPage.forEach(movie=>{
 const settings = {
 	"async": true,
 	"crossDomain": true,
@@ -101,26 +124,28 @@ const settings = {
 	}
 };
 $.ajax(settings).done(function (response) {
-	html1 += `<div class="card" >
-  <img src="${response.poster}" class="card-img-top" alt="Poster ${response.title}">
-  <div class="card-body">
-    <h5 class="card-title">${response.title}</h5>
-    <ul>
-    	<li>${response.year}</li>
-    	<li>IMDb: ${response.rating}</li>
-    </ul>
+	htmlPopPage += `<div class="card-top10" >
+  <img src="${response.poster}" class="card-img-top-top10" alt="Poster ${response.title}">
+  <div class="card-body-top10">
+    <h5 class="card-title-top10">${response.title}(${response.year})</h5>
+    <p>Duración: ${response.length}</p>
+    <p>IMDb: ${response.rating}</p>
+    <p>${response.plot}</p>
    </div>
 </div>`;
 apiData = [...apiData, response];
-populares.innerHTML = html1
+containerPopPage.innerHTML = htmlPopPage
 });
 })
 
 const top10 = document.querySelector(".top10")
-const moviesTop = ["tt0111161", "tt0068646", "tt0071562", "tt0468569", "tt0050083", "tt0108052", "tt0167260", "tt0110912", "tt0060196", "tt0120737"]
-let html2 = ""
+const containerTopPage = document.querySelector(".containerTopPage")
+const moviesTopPage = ["tt0111161", "tt0068646", "tt0071562", "tt0468569", "tt0050083", "tt0108052", "tt0167260", "tt0110912", "tt0060196", "tt0120737"]
+const moviesTopMain = moviesTopPage.slice(0, 3)
+let htmlTopMain = ""
+let htmlTopPage = ""
 
-moviesTop.forEach(movie=>{
+moviesTopPage.forEach(movie=>{
 const settings = {
 	"async": true,
 	"crossDomain": true,
@@ -132,18 +157,42 @@ const settings = {
 	}
 };
 $.ajax(settings).done(function (response) {
-	html2 += `<div class="card" >
-  <img src="${response.poster}" class="card-img-top" alt="Poster ${response.title}">
-  <div class="card-body">
-    <h5 class="card-title">${response.title}</h5>
-    <ul>
-    	<li>${response.year}</li>
-    	<li>IMDb: ${response.rating}</li>
-    </ul>
+	htmlTopPage += `<div class="card-top10" >
+  <img src="${response.poster}" class="card-img-top-top10" alt="Poster ${response.title}">
+  <div class="card-body-top10">
+    <h5 class="card-title-top10">${response.title}(${response.year})</h5>
+  	<p>Duración: ${response.length}</p>
+    <p>IMDb: ${response.rating}</p>
+    <p>${response.plot}</p>
    </div>
 </div>`;
 apiData = [...apiData, response];
-top10.innerHTML = html2
+containerTopPage.innerHTML = htmlTopPage
+});
+})
+
+
+moviesTopMain.forEach(movie=>{
+const settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": `https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/${movie}`,
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "4febb5c775mshbaa376822110a0dp1cd698jsn28a17df44064",
+		"x-rapidapi-host": "imdb-internet-movie-database-unofficial.p.rapidapi.com"
+	}
+};
+$.ajax(settings).done(function (response) {
+	htmlTopMain += `<div class="card">
+  <img src="${response.poster}" class="card-img-top" alt="Poster ${response.title}">
+  <div class="card-body">
+    <h5 class="card-title">${response.title}(${response.year})</h5>
+    <p>IMDb: ${response.rating}</p>
+   </div>
+</div>`;
+apiData = [...apiData, response];
+top10.innerHTML = htmlTopMain
 });
 })
 
@@ -164,20 +213,16 @@ buscarBtn.click(function (event) {
   arrayFiltrado.forEach(movie=>{
   	busqueda += `
   	<div class="estrenos flex">
-  		<div class="card" >
+  		<div class="card card-search" >
   			<img src="${movie.poster}" class="card-img-top" alt="Poster ${movie.title}">
   			<div class="card-body">
-    			<h5 class="card-title">${movie.title}</h5>
-    			<ul>
-    				<li>${movie.year}</li>
-    				<li>IMDb: ${movie.rating}</li>
-    			</ul>
+    			<h5 class="card-title">${movie.title}(${movie.year})</h5>
+    			<p>Duración: ${movie.length}</p>
+    			<p>IMDb: ${movie.rating}</p>
    			</div>
 			</div>
 		</div;
   		`
   })
-
   indexMain.innerHTML = busqueda
-  console.log(arrayFiltrado);
 });
